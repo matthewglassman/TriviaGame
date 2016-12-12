@@ -8,7 +8,7 @@ function run () {
 
 function decrement (){
   number--;
-  $("#display-timer").html("<h2>Time Remaining: " + number);
+  $("#display-timer").html("<h2>Time Remaining: " + number + "</h2>");
   if (number === 0) {  //add addional statement for if answer is clicked
     stop();
   }
