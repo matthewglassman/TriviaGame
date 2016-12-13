@@ -46,6 +46,17 @@ var trivia = {
     answer3: "Wham!",
     answer4: "Duran Duran"
  }, {
-    question5:  ""
- }]
-}
+    question5:  "Pioneers of New Wave music, this quartet, mostly consisting of art school grads, not only created interesting videos, but also one of the best films on concert.  Well known songs include 'Burning Down The House', 'And She War', and 'Wild, Wild Life. Who are they?",
+    answer1: "They Might Be Giants",
+    answer2: "The Cars",
+    answer3: "Talking Heads",
+    answer4: "The Cure"
+ }, {
+    question6:  "The King of Pop, he created a 14 minute long music video that is a hit especialy around Halloween?",
+    answer1: "Prince",
+    answer2: "Michael Jackson",
+    answer3: "David Bowie",
+    answer4: "Bryan Adams"
+ }
+ ]
+};
