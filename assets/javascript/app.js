@@ -34,6 +34,18 @@ var trivia = {
     answer3: "Cyndi Lauper",
     answer4: "Tina Turner"
  }, {
-    question3: "Originally a 4 person punk band from NYC, they whittled down to 3 members before earning their 'License to Ill' and becoming one of the longest-lived hip hop acts until the death of one of their founding members. Which trio that told us to fight for our right to party?", 
+    question3: "Originally a 4 person punk band from NYC, they whittled down to 3 members before earning their 'License to Ill' and becoming one of the longest-lived hip hop acts until the death of one of their founding members. Which trio that told us to fight for our right to party?",
+    answer1: "Beastie Boys",
+    answer2: "Run-DMC",
+    answer3: "Naughty By Nature",
+    answer4: "A Tribe Called Quest"
+ }, {
+    question4: "British pop group with notable members Simon LeBon and Nick Rhodes had hits 'Hungry Like a Wolf' and 'Rio'. Think you can name them?", 
+    answer1: "The Police",
+    answer2: "Spandau Ballet",
+    answer3: "Wham!",
+    answer4: "Duran Duran"
+ }, {
+    question5:  ""
  }]
 }
