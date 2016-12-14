@@ -69,13 +69,15 @@ var trivia = {
 for (var i=0; i < trivia.questionAnswer.length; i++){
   var question = trivia.questionAnswer[i];
   console.log(question);
+    $("#ask-question").html(question.question);
     for (var n=0; n < question.choices.length; n++){
       var choice = question.choices[n];
     console.log(choice);
-    
+    $("#selections").append(choice);
+
     }
 }
   
   
-
+//Bring timer functionality into the for loop.
 //};
