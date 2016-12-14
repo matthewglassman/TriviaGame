@@ -2,6 +2,9 @@
 var number = 45;
 var counter;
 var questionNum = 0;
+var correctCounter = 0;
+var incorrectCounter = 0;
+var unansweredCounter = 0;
 
 function run () {
   counter = setInterval(decrement, 1000);
