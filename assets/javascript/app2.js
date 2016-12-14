@@ -1,9 +1,12 @@
 //create timer
 var number = 45;
 var counter;
+var questionNum = 0;
 
 function run () {
   counter = setInterval(decrement, 1000);
+	//reset number variable
+  number = 45;
 }
 
 function decrement (){
@@ -11,17 +14,19 @@ function decrement (){
   $("#display-timer").html("<h2>Time Remaining: " + number + "</h2>");
   if (number === 0) {  //add addional statement for if answer is clicked
     stop();
-    $("#ask-question").empty();
-    $("#selections").empty();
   }
 }
 function stop (){
   clearInterval(counter);
 }
-run();
 
+function startGame(){
+  run();
+  renderQuestion();
+}
 //create question and answer object array something er other
 var trivia = {
+
   questionAnswer: [
   { //index0
     question: "Known as 'The Boss' his hits of the 1980s included 'Born In The USA', 'Glory Days', and 'Dancing In The Dark'. He is...?",
@@ -68,26 +73,53 @@ var trivia = {
  }
  ]
 };
-for (var i=0; i < trivia.questionAnswer.length; i++){
-  var question = trivia.questionAnswer[i];
-  console.log(question);
-    $("#ask-question").html(question.question);
+
+function renderQuestion() {
+	var question = trivia.questionAnswer[questionNum];
+   $("#ask-question").html(question.question);
+	 $("#selections").empty();
     for (var n=0; n < question.choices.length; n++){
       var choice = question.choices[n];
-    console.log(choice);
-    $("#selections").append(choice);
-
-   }
-
-function timeUp(){
-  
+    	console.log(choice);
+    	$("#selections").append("<button>"+choice+"</button>");
+    }
+	stop();
+	run();
 }
 
-function getQuestion(){
-$("#ask-question").empty();
-$("#ask-question").append(trivia.questionAnswer[0].question);
-};
+function endOfGame (){
+  $(document).empty();
+  $("#wins").html(correctCounter);
+  $("#incorrect").html(incorrectCounter);
+  $("#unanswered").html(unansweredCounter);
+  var reset = $("<button>");
+  reset.attr("id","restart")
+  reset.html("Restart");
+
+}
+function checkQuestion() {
+	// put your checking code here.
+	// if it is right, do the right thing
+	// if it is wrong, do the wrong thing
+	// put a button for next question
+	// follow the instructions
+}
+
+function nextQuestion() {
+	questionNum++;
+	// Rememeber to check if you are at the end.
+  if (questionNum === 6){
+    endOfGame();
+  } else {
+	renderQuestion();
+}
+
+$(document).on("click", "#selections button", checkQuestion)
+
+$("#just-for-example").on("click",nextQuestion);
   
-getQuestion();  
+$("#restart").on("click", startGame);
 //Bring timer functionality into the for loop.
 //};
+renderQuestion();
+//run();
