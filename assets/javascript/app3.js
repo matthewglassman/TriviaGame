@@ -19,7 +19,9 @@ function run () {
 }
 
 function renderQuestion() {
-	var question = trivia.questionAnswer[questionNum];
+	//$("#gyphy").hide();
+	//$("#ask-question").empty();
+	question = trivia.questionAnswer[questionNum];
    $("#ask-question").html(question.question);
 	 $("#selections").empty();
 	 $("#starterbutton").hide();
@@ -37,8 +39,10 @@ function renderQuestion() {
 
 function checkQuestion() {
   //stop();
-  var answerChoice = $("#selections").val();
-  //console.log(answerChoice);
+  $("#selections").empty();
+  $("#ask-question").empty();
+  var answerChoice = $(this).val(); //("#selections").val();
+  console.log(answerChoice);
   correctAnswer = trivia.questionAnswer[questionNum].answer;
   //console.log(correctAnswer);
    if (answerChoice === correctAnswer){
@@ -52,24 +56,28 @@ function correct(){
   //stop();
   //decrement();
   correctCounter++;
-  //set timer delay here before 
-  $("#ask-question").empty();
-  $("#selections").empty();
-  $("#correct").html("<p> That is correct!  " + choice + " is the right answer.");
-  var gif = trivia.questionAnswer[gyphyNum];
-  $("#gyphy").html(gif.gyphy);
-  gyphyNum++
+  //set timer delay here before
+  // $("#correct").empty();
+  // $("#incorrect").empty(); 
+  $("#ask-question").empty(question);
+  $("#selections").hide();
+  $("#correct").html("<p> That is correct!  " + correctAnswer + " is the right answer.");
+  var gif = trivia.questionAnswer[questionNum].gyphy;
+  $("#gyphy").html("<img src='" + gif +"' alt='photo'>");
+  //$("#gyphy").html(gif.gyphy);
+  //gyphyNum++
  // stop();
- // nextQuestion();
+  nextQuestion();
 }
 
 function incorrect(){
   //stop();
  // decrement();
   incorrectCounter++;
-  //set timer delay here before 
-  $("#ask-question").empty();
-  $("#selections").empty();
+  // $("#correct").empty();
+  // $("#incorrect").empty();//set timer delay here before 
+  $("#ask-question").hide();
+  $("#selections").hide();
   $("#incorrect").html("<p> Ooohhh Sorry!  " + correctAnswer + " was the right answer.");
   var gif = trivia.questionAnswer[questionNum].gyphy;
  // console.log(gif);
@@ -86,7 +94,7 @@ function nextQuestion() {
     endOfGame();
   } else if (questionNum <= 5){
   questionNum++;
-  console.log(questionNum);
+  //console.log(questionNum);
 	renderQuestion();
 	}
 }
