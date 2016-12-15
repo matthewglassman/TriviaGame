@@ -95,14 +95,32 @@ function renderQuestion() {
     }
 	stop();
 	run();
-}
+};
 
 function correct(){
   stop();
+  correctCounter++;
+  //set timer delay here before 
   $("#ask-question").empty();
   $("#selections").empty();
+  $("body").html("<p> That is correct!  " + choice + "is the right answer.")
   var gif = trivia.questionAnswer[gyphyNum];
-}
+  $("#gyphy").html(gyphy.gif);
+  nextQuestion();
+};
+
+function incorrect(){
+  stop();
+  incorrectCounter++;
+  //set timer delay here before 
+  $("#ask-question").empty();
+  $("#selections").empty();
+  $("body").html("<p> Ooohhh Sorry!  " + choice + "is the right answer.")
+  var gif = trivia.questionAnswer[gyphyNum];
+  $("#gyphy").html(gyphy.gif);
+  nextQuestion();
+};
+
 
 function endOfGame (){
   $(document).empty();
@@ -113,7 +131,7 @@ function endOfGame (){
   reset.attr("id","restart")
   reset.html("Restart");
 
-}
+};
 function checkQuestion() {
   stop();
   var answerChoice = $("#selections").val();
