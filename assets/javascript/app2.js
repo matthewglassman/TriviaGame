@@ -18,6 +18,7 @@ function decrement (){
   $("#display-timer").html("<h2>Time Remaining: " + number + "</h2>");
   if (number === 0) {  //add addional statement for if answer is clicked
     stop();
+    notAnswered();
   }
 }
 function stop (){
@@ -110,13 +111,27 @@ function correct(){
   nextQuestion();
 };
 
+function notAnswered(){
+  stop();
+  unansweredCounter++;
+  //set timer delay here before 
+  $("#ask-question").empty();
+  $("#selections").empty();
+  $("body").html("<p> Time ran out!  " + choice + "was the right answer.")
+  var gif = trivia.questionAnswer[gyphyNum];
+  $("#gyphy").html(gyphy.gif);
+  gyphyNum++
+  nextQuestion();
+};
+
+
 function incorrect(){
   stop();
   incorrectCounter++;
   //set timer delay here before 
   $("#ask-question").empty();
   $("#selections").empty();
-  $("body").html("<p> Ooohhh Sorry!  " + choice + "is the right answer.")
+  $("body").html("<p> Ooohhh Sorry!  " + choice + "was the right answer.")
   var gif = trivia.questionAnswer[gyphyNum];
   $("#gyphy").html(gyphy.gif);
   gyphyNum++
@@ -126,9 +141,10 @@ function incorrect(){
 
 function endOfGame (){
   $(document).empty();
-  $("#wins").html(correctCounter);
-  $("#incorrect").html(incorrectCounter);
-  $("#unanswered").html(unansweredCounter);
+  $("#wins").html("<h3>You got " + correctCounter+ "answers right.</h3>");
+  $("#incorrect").html("<h3> You got " + incorrectCounter + "answers wrong.</h3>");
+  $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
+  $("#gyphy").attr("src", "/assets/images/rickroll.gif")
   var reset = $("<button>");
   reset.attr("id","restart")
   reset.html("Restart");
