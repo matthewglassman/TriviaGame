@@ -106,6 +106,7 @@ function correct(){
   $("body").html("<p> That is correct!  " + choice + "is the right answer.")
   var gif = trivia.questionAnswer[gyphyNum];
   $("#gyphy").html(gyphy.gif);
+  gyphyNum++
   nextQuestion();
 };
 
@@ -118,6 +119,7 @@ function incorrect(){
   $("body").html("<p> Ooohhh Sorry!  " + choice + "is the right answer.")
   var gif = trivia.questionAnswer[gyphyNum];
   $("#gyphy").html(gyphy.gif);
+  gyphyNum++
   nextQuestion();
 };
 
@@ -148,11 +150,10 @@ function checkQuestion() {
 }
 
 function nextQuestion() {
-	questionNum++;
-	// Rememeber to check if you are at the end.
-  if (questionNum > 6){
+	if (questionNum > 6){  // Rememeber to check if you are at the end.
     endOfGame();
   } else {
+  questionNum++;
 	renderQuestion();
 }
 
