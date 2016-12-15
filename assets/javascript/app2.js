@@ -189,5 +189,9 @@ $("#restart").on("click", firstThingsFirst);
 $("#starterbutton").on("click", startGame);
 //Bring timer functionality into the for loop.
 //};
+firstThingsFirst();
+startGame();
+run();
 renderQuestion();
+
 //run();
