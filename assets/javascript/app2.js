@@ -5,7 +5,9 @@ var questionNum = 0;
 var correctCounter = 0;
 var incorrectCounter = 0;
 var unansweredCounter = 0;
-var giphyNum = 0
+var gyphyNum = 0;
+
+//Create an answer array or answerNum to mirror questionNum
 
 function run () {
   counter = setInterval(decrement, 1000);
@@ -21,6 +23,7 @@ function decrement (){
     notAnswered();
   }
 }
+
 function stop (){
   clearInterval(counter);
 }
@@ -47,7 +50,7 @@ var trivia = {
     // answer3: "Michael Jackson",
     // answer4: "Barry White"
     answer: "Bruce Springsteen",
-    giphy: "../assets/images/springsteen.gif"
+    giphy: "assets/images/springsteen.gif"
   }, { //index 1
     question: "Her album 'She's So Unusual' skyrocketed to success and produced multiple hit singles like 'Girls Just Want To Have Fun' and the infamous 'She Bop'. Who was so unusual?", 
     choices: ["Madonna", "Janet Jackson", "Cyndi Lauper", "Tina Turner"],
@@ -55,7 +58,7 @@ var trivia = {
     // answer3: "Cyndi Lauper",
     // answer4: "Tina Turner"
     answer: "Cyndi Lauper",
-    giphy: "../assets/images/lauper.gif"
+    giphy: "assets/images/lauper.gif"
  }, { //index 2
     question: "Originally a 4 person punk band from NYC, they whittled down to 3 members before earning their 'License to Ill' and becoming one of the longest-lived hip hop acts until the death of one of their founding members. Which trio that told us to fight for our right to party?",
     choices: ["The Beastie Boys", "Run-DMC", "Naughty By Nature", "A Tribe Called Quest"],
@@ -63,7 +66,7 @@ var trivia = {
     // answer3: "Naughty By Nature",
     // answer4: "A Tribe Called Quest"
     answer: "The Beastie Boys",
-    giphy:  "../assets/images/beasties.gif"
+    giphy:  "assets/images/beasties.gif"
  }, { //index 3
     question: "British pop group with notable members Simon LeBon and Nick Rhodes had hits 'Hungry Like a Wolf' and 'Rio'. Think you can name them?", 
     choices: ["The Police", "Spandau Ballet", "Wham!", "Duran Duran"],
@@ -71,7 +74,7 @@ var trivia = {
     // answer3: "Wham!",
     // answer4: "Duran Duran"
     answer: "Duran Duran",
-    giphy:  "../assets/images/duranduran.gif"
+    giphy:  "assets/images/duranduran.gif"
  }, { //index 4
     question:  "Pioneers of New Wave music, this quartet, mostly consisting of art school grads, not only created interesting videos, but also one of the best films on concert.  Well known songs include 'Burning Down The House', 'And She War', and 'Wild, Wild Life. Who are they?",
     choices: ["They Might Be Giants", "The Cars", "Talking Heads", "The Cure"],
@@ -79,7 +82,7 @@ var trivia = {
     // answer3: "Talking Heads",
     // answer4: "The Cure"
     answer: "Talking Heads",
-    giphy:  "../assets/images/talkingheads.gif"
+    giphy:  "assets/images/talkingheads.gif"
  }, { //index 5
     question:  "The King of Pop, he created a 14 minute long music video that is a hit especialy around Halloween. Who is music royalty?",
     choices: ["Prince", "Michael Jackson", "David Bowie", "Bryan Adams"],
@@ -87,7 +90,7 @@ var trivia = {
     // answer3: "David Bowie",
     // answer4: "Bryan Adams"
     answer: "Michael Jackson",
-    giphy:  "../assets/images/thriller.gif"
+    giphy:  "assets/images/thriller.gif"
  }
  ]
 };
@@ -97,7 +100,8 @@ function renderQuestion() {
    $("#ask-question").html(question.question);
 	 $("#selections").empty();
     for (var n=0; n < question.choices.length; n++){
-      var choice = question.choices[n];
+      choice = question.choices[n];
+      //var choice = question.choices[n];
     	console.log(choice);
     	$("#selections").append("<button>"+choice+"</button>");
     }
@@ -106,42 +110,48 @@ function renderQuestion() {
 };
 
 function correct(){
-  stop();
+  //stop();
+  decrement();
   correctCounter++;
   //set timer delay here before 
   $("#ask-question").empty();
   $("#selections").empty();
-  $("body").html("<p> That is correct!  " + choice + "is the right answer.")
+  $("body").html("<p> That is correct!  " + choice + " is the right answer.");
   var gif = trivia.questionAnswer[gyphyNum];
-  $("#gyphy").html(gyphy.gif);
+  $("#gyphy").html(gif.gyphy);
   gyphyNum++
+  stop();
   nextQuestion();
 };
 
 function notAnswered(){
-  stop();
+  //stop();
+  decrement();
   unansweredCounter++;
   //set timer delay here before 
   $("#ask-question").empty();
   $("#selections").empty();
-  $("body").html("<p> Time ran out!  " + choice + "was the right answer.")
+  $("body").html("<p> Time ran out!  " + choice + " was the right answer.");
   var gif = trivia.questionAnswer[gyphyNum];
-  $("#gyphy").html(gyphy.gif);
+  $("#gyphy").html(gif.gyphy);
   gyphyNum++
+  stop();
   nextQuestion();
 };
 
 
 function incorrect(){
-  stop();
+  //stop();
+  decrement();
   incorrectCounter++;
   //set timer delay here before 
   $("#ask-question").empty();
   $("#selections").empty();
-  $("body").html("<p> Ooohhh Sorry!  " + choice + "was the right answer.")
+  $("body").html("<p> Ooohhh Sorry!  " + choice + " was the right answer.");
   var gif = trivia.questionAnswer[gyphyNum];
-  $("#gyphy").html(gyphy.gif);
+  $("#gyphy").html(gif.gyphy);
   gyphyNum++
+  stop();
   nextQuestion();
 };
 
@@ -151,12 +161,12 @@ function endOfGame (){
   $("#wins").html("<h3>You got " + correctCounter+ "answers right.</h3>");
   $("#incorrect").html("<h3> You got " + incorrectCounter + "answers wrong.</h3>");
   $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
-  $("#gyphy").attr("src", "/assets/images/rickroll.gif")
+  $("#gyphy").attr("src", "assets/images/rickroll.gif")
   var reset = $("<button>");
   reset.attr("id","restart")
   reset.text("Restart");
-
 };
+
 function checkQuestion() {
   stop();
   var answerChoice = $("#selections").val();
@@ -179,10 +189,11 @@ function nextQuestion() {
   questionNum++;
 	renderQuestion();
 }
+};
 
 $(document).on("click", "#selections button", checkQuestion)
 
-$("#just-for-example").on("click",nextQuestion);
+//$("#just-for-example").on("click",nextQuestion);
   
 $("#restart").on("click", firstThingsFirst);
 
