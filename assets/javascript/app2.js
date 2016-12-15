@@ -25,6 +25,13 @@ function stop (){
   clearInterval(counter);
 }
 
+function firstThingsFirst(){
+$(document).empty()
+var startButton = $("<button>");
+startButton.attr("id", "starterbutton");
+startButton.text("Start")
+}
+
 function startGame(){
   run();
   renderQuestion();
@@ -147,7 +154,7 @@ function endOfGame (){
   $("#gyphy").attr("src", "/assets/images/rickroll.gif")
   var reset = $("<button>");
   reset.attr("id","restart")
-  reset.html("Restart");
+  reset.text("Restart");
 
 };
 function checkQuestion() {
@@ -177,7 +184,9 @@ $(document).on("click", "#selections button", checkQuestion)
 
 $("#just-for-example").on("click",nextQuestion);
   
-$("#restart").on("click", startGame);
+$("#restart").on("click", firstThingsFirst);
+
+$("#starterbutton").on("click", startGame);
 //Bring timer functionality into the for loop.
 //};
 renderQuestion();
