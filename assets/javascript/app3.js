@@ -67,7 +67,8 @@ function correct(){
   //$("#gyphy").html(gif.gyphy);
   //gyphyNum++
  // stop();
-  nextQuestion();
+ setTimeout(nextQuestion, 1000 * 10);
+ //nextQuestion();
 }
 
 function incorrect(){
@@ -85,7 +86,7 @@ function incorrect(){
   //gyphyNum++
  // console.log(gyphyNum);
   //stop();
- nextQuestion();
+ setTimeout(nextQuestion, 1000 * 10);
 }
 
 function nextQuestion() {
