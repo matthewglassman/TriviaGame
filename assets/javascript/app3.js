@@ -29,7 +29,8 @@ function renderQuestion() {
       choice = question.choices[n];
       //var choice = question.choices[n];
     	//console.log(choice);
-    	$("#selections").append("<button id='" + choice + "' value='" + choice + "'>" + choice + "</button>")//"<button>"+choice+"</button>")
+    	$("#selections").append("<button id='" + choice + "' value='" + choice + "'>" + choice + "</button>")
+    					.show()//"<button>"+choice+"</button>")
     	//$("button").val(choice);
 
     }
@@ -59,7 +60,7 @@ function correct(){
   //set timer delay here before
   // $("#correct").empty();
   // $("#incorrect").empty(); 
-  $("#ask-question").empty(question);
+  $("#ask-question").hide();
   $("#selections").hide();
   $("#correct").html("<p> That is correct!  " + correctAnswer + " is the right answer.");
   var gif = trivia.questionAnswer[questionNum].gyphy;
@@ -67,7 +68,7 @@ function correct(){
   //$("#gyphy").html(gif.gyphy);
   //gyphyNum++
  // stop();
- setTimeout(nextQuestion, 1000 * 10);
+ setTimeout(nextQuestion, 1000 * 5);
  //nextQuestion();
 }
 
@@ -86,23 +87,28 @@ function incorrect(){
   //gyphyNum++
  // console.log(gyphyNum);
   //stop();
- setTimeout(nextQuestion, 1000 * 10);
+setTimeout(nextQuestion, 1000 * 5);
 }
 
 function nextQuestion() {
-	//questionNum++
+	questionNum++
+	$("#ask-question").show();
+	$("#gyphy").empty();
+	$("#correct").empty();
+	$("#incorrect").empty();
 	if (questionNum > 5){  // Rememeber to check if you are at the end.
+   // console.log(quesitonNum);
     endOfGame();
   } else if (questionNum <= 5){
-  questionNum++;
-  //console.log(questionNum);
+  //questionNum++;
+  console.log(questionNum);
 	renderQuestion();
 	}
 }
 
 function endOfGame (){
-  $(document).empty();
-  $("#correct").html("<h3>You got " + correctCounter+ " answers right.</h3>");
+  //$(document).empty();
+  $("#correct").html("<h3>You got " + correctCounter + " answers right.</h3>");
   $("#incorrect").html("<h3> You got " + incorrectCounter + " answers wrong.</h3>");
   $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
   $("#gyphy").html("<img src='assets/images/rickroll.gif'>");
