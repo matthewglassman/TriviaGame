@@ -7,6 +7,8 @@ var incorrectCounter = 0;
 var unansweredCounter = 0;
 var gyphyNum = 0;
 
+$("div").css(center);
+
 function startGame(){
 //  run();
   renderQuestion();
