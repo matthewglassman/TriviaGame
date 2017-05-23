@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Trivia</title>
+	<title>80's Music Trivia</title>
+
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<script type="text/javascript" src='https://code.jquery.com/jquery-2.2.0.js'></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
-<script type="text/javascript" src='https://code.jquery.com/jquery-2.2.0.js'></script>
+	<div id="titlewrap">
+		<h1>80's Music Trivia</h1>
+		<div id="quizwrap">
+			<div id="display-timer"></div>
+			<div id="ask-question"></div>
 
-<div id="display-timer"></div>
-
-<div id="ask-question"></div>
-
-<div id="selections"></div>
-<button id="starterbutton">Start Game</button>
-<div id="correct"></div>
-<div id="incorrect"></div>
-<div id="unanswered"></div>
-
-<div id="gyphy" height="200"></div>
-
+			<div id="selections"></div>
+			<button id="starterbutton">Start Game</button>
+			<button id="startover">Start Again</button>
+			<div id="correct"></div>
+			<div id="incorrect"></div>
+			<div id="unanswered"></div>
+			<div id="gyphy" height="200"></div>
+		</div>
+	</div>
 <script type="text/javascript" src="assets/javascript/app3.js"></script>
 </body>
 </html>

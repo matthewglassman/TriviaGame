@@ -1,0 +1,68 @@
+html,
+body{
+	height: 100%;
+}
+
+body{
+	background-image: url("../images/80s1.jpg");
+	text-align: center;
+}
+
+#titlewrap{
+	margin: 4% auto;
+	background-color: #00aba0;
+	width: 960px;
+	height: 95%;
+	box-sizing: border-box;
+}
+
+#quizwrap{
+	position: relative;
+	top: 20%;
+}
+
+button{
+	display:block;
+	width: 30%;
+	height: 15%;
+	margin: 0 auto;
+	border: none;
+	cursor: pointer;
+	background: transparent;
+	font-size: 30px;
+}
+
+img{
+	height: 230px;
+}
+
+h1{
+	font-family: 'Changa', sans-serif;
+	font-weight: bold;
+	font-size: 4.5em;
+	padding-top: 1%;
+	border: 1%;
+}
+
+h2{
+	font-size: 35px;
+	margin-bottom: 10px;
+}
+
+h3{
+	font-size:25px;
+	margin-bottom: 10px;
+}
+#starterbutton{
+	margin-top: 10%;
+	background: white;
+}
+#startover{
+	margin-top: 2%;
+	background: white;
+	border: none;
+}
+button:hover {
+	border: 1px solid yellow;
+	background: white;
+}

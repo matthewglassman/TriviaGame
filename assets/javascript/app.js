@@ -64,7 +64,7 @@ function correct(){
   // $("#incorrect").empty(); 
   $("#ask-question").hide();
   $("#selections").hide();
-  $("#correct").html("<p> That is correct!  " + correctAnswer + " is the right answer.");
+  $("#correct").html("<h3> That is correct!  " + correctAnswer + " is the right answer.</h3>");
   var gif = trivia.questionAnswer[questionNum].gyphy;
   $("#gyphy").html("<img src='" + gif +"' alt='photo'>");
   //$("#gyphy").html(gif.gyphy);
@@ -82,7 +82,7 @@ function incorrect(){
   // $("#incorrect").empty();//set timer delay here before 
   $("#ask-question").hide();
   $("#selections").hide();
-  $("#incorrect").html("<p> Ooohhh Sorry!  " + correctAnswer + " was the right answer.");
+  $("#incorrect").html("<h3> Ooohhh Sorry!  " + correctAnswer + " was the right answer.</h3>");
   var gif = trivia.questionAnswer[questionNum].gyphy;
  // console.log(gif);
   $("#gyphy").html("<img src='" + gif +"' alt='photo'>"); //("<img src=" + gif + ">");

@@ -7,8 +7,14 @@ var incorrectCounter = 0;
 var unansweredCounter = 0;
 var gyphyNum = 0;
 
+$("#startover").hide();
+
 function startGame(){
 //  run();
+  $("#correct").empty();
+  $("#incorrect").empty();
+  // $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
+  $("#gyphy").empty();
   renderQuestion();
 }
 
@@ -22,9 +28,10 @@ function renderQuestion() {
 	//$("#gyphy").hide();
 	//$("#ask-question").empty();
 	question = trivia.questionAnswer[questionNum];
-   $("#ask-question").html(question.question);
+   $("#ask-question").html("<h2>" + question.question + "</h2>");
 	 $("#selections").empty();
 	 $("#starterbutton").hide();
+   $("#startover").hide();
     for (var n=0; n < question.choices.length; n++){
       choice = question.choices[n];
       //var choice = question.choices[n];
@@ -62,13 +69,13 @@ function correct(){
   // $("#incorrect").empty(); 
   $("#ask-question").hide();
   $("#selections").hide();
-  $("#correct").html("<p> That is correct!  " + correctAnswer + " is the right answer.");
+  $("#correct").html("<h3> That is correct!  " + correctAnswer + " is the right answer.</h3>");
   var gif = trivia.questionAnswer[questionNum].gyphy;
   $("#gyphy").html("<img src='" + gif +"' alt='photo'>");
   //$("#gyphy").html(gif.gyphy);
   //gyphyNum++
  // stop();
- setTimeout(nextQuestion, 1000 * 5);
+ setTimeout(nextQuestion, 1000 * 4);
  //nextQuestion();
 }
 
@@ -80,14 +87,14 @@ function incorrect(){
   // $("#incorrect").empty();//set timer delay here before 
   $("#ask-question").hide();
   $("#selections").hide();
-  $("#incorrect").html("<p> Ooohhh Sorry!  " + correctAnswer + " was the right answer.");
+  $("#incorrect").html("<h3> Ooohhh Sorry!  " + correctAnswer + " was the right answer.</h3>");
   var gif = trivia.questionAnswer[questionNum].gyphy;
  // console.log(gif);
   $("#gyphy").html("<img src='" + gif +"' alt='photo'>"); //("<img src=" + gif + ">");
   //gyphyNum++
  // console.log(gyphyNum);
   //stop();
-setTimeout(nextQuestion, 1000 * 5);
+setTimeout(nextQuestion, 1000 * 4);
 }
 
 function nextQuestion() {
@@ -110,11 +117,9 @@ function endOfGame (){
   //$(document).empty();
   $("#correct").html("<h3>You got " + correctCounter + " answers right.</h3>");
   $("#incorrect").html("<h3> You got " + incorrectCounter + " answers wrong.</h3>");
-  $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
+  // $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
   $("#gyphy").html("<img src='assets/images/rickroll.gif'>");
-  var reset = $("<button>");
-  reset.attr("id","restart")
-  reset.text("Restart");
+  $("#startover").show();
 };
 
 var trivia = {
@@ -171,7 +176,18 @@ var trivia = {
  }
  ]
 };
+function reset(){
+  questionNum = 0;
+  answerNum = 0;
+  correctCounter = 0;
+  incorrectCounter = 0;
+  gyphyNum = 0;
+  startGame();
 
+}
 
 $("#starterbutton").on("click", startGame);
 $(document).on("click", "#selections button", checkQuestion);
+$(document).on("click", "#startover", function(){
+  reset();
+});
