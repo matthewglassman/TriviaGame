@@ -7,10 +7,14 @@ var incorrectCounter = 0;
 var unansweredCounter = 0;
 var gyphyNum = 0;
 
-$("div").css(center);
+$("#startover").hide();
 
 function startGame(){
 //  run();
+  $("#correct").empty();
+  $("#incorrect").empty();
+  // $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
+  $("#gyphy").empty();
   renderQuestion();
 }
 
@@ -24,9 +28,10 @@ function renderQuestion() {
 	//$("#gyphy").hide();
 	//$("#ask-question").empty();
 	question = trivia.questionAnswer[questionNum];
-   $("#ask-question").html(question.question);
+   $("#ask-question").html("<h2>" + question.question + "</h2>");
 	 $("#selections").empty();
 	 $("#starterbutton").hide();
+   $("#startover").hide();
     for (var n=0; n < question.choices.length; n++){
       choice = question.choices[n];
       //var choice = question.choices[n];
@@ -70,7 +75,7 @@ function correct(){
   //$("#gyphy").html(gif.gyphy);
   //gyphyNum++
  // stop();
- setTimeout(nextQuestion, 1000 * 5);
+ setTimeout(nextQuestion, 1000 * 4);
  //nextQuestion();
 }
 
@@ -89,7 +94,7 @@ function incorrect(){
   //gyphyNum++
  // console.log(gyphyNum);
   //stop();
-setTimeout(nextQuestion, 1000 * 5);
+setTimeout(nextQuestion, 1000 * 4);
 }
 
 function nextQuestion() {
@@ -112,11 +117,9 @@ function endOfGame (){
   //$(document).empty();
   $("#correct").html("<h3>You got " + correctCounter + " answers right.</h3>");
   $("#incorrect").html("<h3> You got " + incorrectCounter + " answers wrong.</h3>");
-  $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
+  // $("#unanswered").html("<h3> And you didn't bother answering " + unansweredCounter + "</h3>");
   $("#gyphy").html("<img src='assets/images/rickroll.gif'>");
-  var reset = $("<button>");
-  reset.attr("id","restart")
-  reset.text("Restart");
+  $("#startover").show();
 };
 
 var trivia = {
@@ -173,7 +176,18 @@ var trivia = {
  }
  ]
 };
+function reset(){
+  questionNum = 0;
+  answerNum = 0;
+  correctCounter = 0;
+  incorrectCounter = 0;
+  gyphyNum = 0;
+  startGame();
 
+}
 
 $("#starterbutton").on("click", startGame);
 $(document).on("click", "#selections button", checkQuestion);
+$(document).on("click", "#startover", function(){
+  reset();
+});
